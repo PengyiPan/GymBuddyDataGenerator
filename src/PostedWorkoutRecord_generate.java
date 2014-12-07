@@ -19,7 +19,10 @@ public class PostedWorkoutRecord_generate {
 	private static String[] sportTypes = {"Swimming", "Basketball", "Tennis","Workout","Running","Soccer","Other" };
 	private static String[] sportSubTypes = {"Pro","Advanced","Intermediate","Beginner","Other"};
 	private static String[] locations = {"East","Central","West","Other"};
-	
+    private static String[] profilepictures = {"default picture", "doge", "female1","female2","female3","female4","male1","male2","male3","male4","male5","male6"};
+
+    
+
 	private static int numToGenerate = 50;
 	
 	public static void main(String[] args){
@@ -30,6 +33,8 @@ public class PostedWorkoutRecord_generate {
 		String pre = "INSERT INTO `PostedWorkoutRecord2`(`time_start`, `time_end`, `location`, `sport_type`, `sport_sub_type`) VALUES";
         System.out.println(pre);
 		generateValue();
+
+
 	}
 	
 	private static void generateValue(){
