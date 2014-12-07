@@ -28,7 +28,7 @@ public class PostedWorkoutRecord_generate {
 	
 	private static void generate(){
 		String pre = "INSERT INTO `PostedWorkoutRecord2`(`time_start`, `time_end`, `location`, `sport_type`, `sport_sub_type`) VALUES";
-		System.out.println(pre);
+        System.out.println(pre);
 		generateValue();
 	}
 	
@@ -62,13 +62,15 @@ public class PostedWorkoutRecord_generate {
 
 	    return randomNum;
 	}
-	
+
+
+
 
 	//using Joda.org
 	public static String[] randomDateTime() {
 		Random random = new Random();
 		int minPeriodInMins = 30;
-		int maxPeriodInHours = 5;
+		int maxPeriodInHours = 3;
 
 		DateTime startTime = new DateTime(System.currentTimeMillis() + random.nextInt()).withMillisOfSecond(0);
 		startTime.withYear(2014);
