@@ -21,8 +21,8 @@ public class PostedWorkoutRecord_generate {
 	private static String[] sportTypes = {"Swimming", "Basketball", "Tennis","Workout","Running","Soccer","Other" };
 	private static String[] sportSubTypes = {"Pro","Advanced","Intermediate","Beginner","Other"};
 	private static String[] locations = {"East","Central","West","Other"};
-    private static String[] fmprofilePictures = {"default picture", "doge", "female1","female2","female3","female4"};
-    private static String[] mprofilePictures = {"default picture","doge","male1","male2","male3","male4","male5","male6"};
+    private static String[] fmprofilePictures = {"default picture", "doge", "female1","female2","female3","female4","a1","a2","a3","a4","a5"};
+    private static String[] mprofilePictures = {"default picture","doge","male1","male2","male3","male4","male5","male6","a1","a2","a3","a4","a5"};
 
     private static String[] Last_Names = {"Lee","Luu","James","Cox","Stewart","Smith","John","Williams"};
     private static String[] First_Names = {"Bob","Jill","Tom","Brandon","Roy","Peter","Jenny","Sarah","Vivian","Sandy","Irene"};
@@ -30,16 +30,16 @@ public class PostedWorkoutRecord_generate {
 
     public static void main(String[] args){
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the num of users needed: ");
-        int numUserToGenerate = scanner.nextInt();
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Enter the num of users needed: ");
+//        int numUserToGenerate = scanner.nextInt();
+//
+//        System.out.println("Enter the num of records needed: ");
+//        int numRecordToGenerate = scanner.nextInt();
 
-        System.out.println("Enter the num of records needed: ");
-        int numRecordToGenerate = scanner.nextInt();
 
-
-        //int numUserToGenerate = 10;
-//        int numRecordToGenerate = 10;
+        int numUserToGenerate = 30;
+        int numRecordToGenerate = 100;
 
 
 		generate(numUserToGenerate,numRecordToGenerate);
@@ -89,7 +89,7 @@ public class PostedWorkoutRecord_generate {
                 int index_l = new Random().nextInt(Last_Names.length);
 
 
-                String password = "'hjknvznfowhrouw'";
+                String password = "'hjknv45321'";
                 String last_name = "'"+Last_Names[index_l]+ "'";
                 String first_name = "'"+First_Names[index_f]+ "'";
                 String gender;
@@ -138,7 +138,7 @@ public class PostedWorkoutRecord_generate {
             //generate corresponding postedby entry for this record
             String by_id =  user_id.get(new Random().nextInt(user_id.size()));
             String postTime = dates[2];
-            String pb = "("+ by_id+ ",'"+ i + "','"+ postTime + "')";
+            String pb = "("+ by_id+ ",'"+ (i+1) + "','"+ postTime + "')";
             postedBy.add(pb);
 
             if(i==numRecordToGenerate-1){
