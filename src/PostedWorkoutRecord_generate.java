@@ -5,7 +5,9 @@
 //
 
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import org.joda.time.DateTime;
 import org.joda.time.Hours;
@@ -19,27 +21,72 @@ public class PostedWorkoutRecord_generate {
 	private static String[] sportTypes = {"Swimming", "Basketball", "Tennis","Workout","Running","Soccer","Other" };
 	private static String[] sportSubTypes = {"Pro","Advanced","Intermediate","Beginner","Other"};
 	private static String[] locations = {"East","Central","West","Other"};
-    private static String[] profilepictures = {"default picture", "doge", "female1","female2","female3","female4","male1","male2","male3","male4","male5","male6"};
+    private static String[] profilePictures = {"default picture", "doge", "female1","female2","female3","female4","male1","male2","male3","male4","male5","male6"};
 
-    
 
-	private static int numToGenerate = 50;
-	
-	public static void main(String[] args){
-		generate();
+    public static void main(String[] args){
+
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Enter the num of users needed: ");
+//        int numUserToGenerate = scanner.nextInt();
+//
+//        System.out.println("Enter the num of records needed: ");
+//        int numRecordToGenerate = scanner.nextInt();
+
+
+        int numUserToGenerate = 100;
+        int numRecordToGenerate = 10;
+
+
+		generate(numUserToGenerate,numRecordToGenerate);
 	}
 	
-	private static void generate(){
-		String pre = "INSERT INTO `PostedWorkoutRecord2`(`time_start`, `time_end`, `location`, `sport_type`, `sport_sub_type`) VALUES";
+	private static void generate(int numUserToGenerate, int numRecordToGenerate){
+
+
+
+        ArrayList<String> user_id = generateUser(numUserToGenerate);
+
+
+        String pre = "INSERT INTO `PostedWorkoutRecord2`(`time_start`, `time_end`, `location`, `sport_type`, `sport_sub_type`) VALUES";
         System.out.println(pre);
-		generateValue();
+        generateRecord(numRecordToGenerate);
+
+
 
 
 	}
-	
-	private static void generateValue(){
+
+
+	private static ArrayList<String> generateUser(int numUserToGenerate){
+        ArrayList<String> user_id = new ArrayList<String>();
+        String query_adduser = "INSERT INTO `User`(`net_id`, `password`, `last_name`, `first_name`, `gender`,`picture_url`,`num_thumbs`,`signature`) VALUES";
+        System.out.println(query_adduser);
+
+        for(int i=0;i<numUserToGenerate;i++){
+            Random r = new Random();
+            int i1 = r.nextInt(123 - 97) + 97;
+            int i2 = r.nextInt(123 - 97) + 97;
+            int i3 = r.nextInt(600);
+            char ch1 = (char) i1;
+            char ch2 = (char) i2;
+
+
+            String net_id = ch1+""+ch2+ "";
+            System.out.println(net_id);
+      
+
+
+        }
+        
+
+        return user_id;
+
+    }
+
+	private static void generateRecord(int numRecordToGenerate){
 		
-		for(int i=0;i<numToGenerate;i++){
+		for(int i=0;i<numRecordToGenerate;i++){
 			String[] dates = randomDateTime();
 			String startTime = "'"+dates[0]+"'";
 			String endTime = "'"+dates[1]+"'";
@@ -47,7 +94,7 @@ public class PostedWorkoutRecord_generate {
 			String sport = "'"+sportTypes[randIntIncludeMax(sportTypes.length)]+"'";
 			String sportSub = "'"+sportSubTypes[randIntIncludeMax(sportSubTypes.length)]+"'";
 			String out = "(" + startTime +","+ endTime +","+ loc +","+ sport +","+ sportSub + ")";
-			if(i==numToGenerate-1){
+			if(i==numRecordToGenerate-1){
 				System.out.print(out);
 				System.out.println();
 			}else{
