@@ -38,8 +38,8 @@ public class PostedWorkoutRecord_generate {
 //        int numRecordToGenerate = scanner.nextInt();
 
 
-        int numUserToGenerate = 30;
-        int numRecordToGenerate = 100;
+        int numUserToGenerate = 80;
+        int numRecordToGenerate = 600;
 
 
 		generate(numUserToGenerate,numRecordToGenerate);
@@ -102,7 +102,7 @@ public class PostedWorkoutRecord_generate {
                     picture_url = "'"+fmprofilePictures[new Random().nextInt(fmprofilePictures.length)]+"'";
                 }
                 String num_thumbs = "'"+new Random().nextInt(99)+"'";
-                String signature = "'"+"My name is "+First_Names[index_f] +". I like " + sportTypes[new Random().nextInt(sportTypes.length)]   +".'";
+                String signature = "'"+"My name is "+First_Names[index_f] +". Contact me at 919-647-xxxx.'";
 
 
 
